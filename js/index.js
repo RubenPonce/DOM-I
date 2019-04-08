@@ -49,10 +49,22 @@ setImg("middle-img",siteContent["main-content"]["middle-img-src"]);
 //header links
 const navLinks = Array.from(document.querySelectorAll("nav a"));
 navLinks.forEach((link,index) => link.textContent = siteContent["nav"][`nav-item-${index+1}`]);
+//create two link items
+const item1 = document.createElement("a");
+item1.textContent = "Item1"
+const item2 = document.createElement("a");
+item2.textContent = "Item2"
+const addNavLinks = document.querySelector('header nav');
+addNavLinks.prepend(item1);
+addNavLinks.appendChild(item2);
+//set links to green
+[...addNavLinks.children].forEach(link=> link.style.color = 'green')
+
+
 
 //cta-text
 const ctaText = document.querySelector(".cta-text");
-ctaText.firstElementChild.textContent = siteContent["cta"]["h1"];
+ctaText.firstElementChild.innerHTML = `${siteContent["cta"]["h1"].split(' ').join('<br>')}`;
 ctaText.lastElementChild.textContent = siteContent["cta"]["button"];
 
 //main-content
